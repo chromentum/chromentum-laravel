@@ -21,7 +21,11 @@ class BackgroundImageController extends Controller
         $key = md5($request->key);
 
         $photo = Cache::remember($key, config('cache.ttl'), function () use($backgroundImage) {
-            return $backgroundImage->random([]);
+            return $backgroundImage->random([
+                "h" => 768,
+                "w" => 1024,
+                "query" => "landscape"
+            ]);
         });
 
         return new BackgroundImageResource($photo);
