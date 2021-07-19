@@ -231,4 +231,13 @@ return [
 
     ],
 
+    "background-image" => [
+        "unsplash" => [
+            'applicationId'	=> env('UNSPLASH_APP_ID', null),
+            'secret'	=> env('UNSPLASH_SECRET', null),
+            'callbackUrl'	=> env('UNSPLASH_CALLBACK_URL', null),
+            'utmSource' => env('UNSPLASH_UTM_SOURCE', null),
+        ]
+    ],
+
 ];
