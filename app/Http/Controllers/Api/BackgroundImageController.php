@@ -6,6 +6,7 @@ use App\Contracts\BackgroundImageService;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\BackgroundImageResource;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Cache;
 
 class BackgroundImageController extends Controller
@@ -18,7 +19,8 @@ class BackgroundImageController extends Controller
      */
     public function __invoke(Request $request, BackgroundImageService $backgroundImage)
     {
-        $key = md5($request->key);
+        $numbers = ["1", "2", "3", "4", "5"];
+        $key = (string)now()->format('dmy') . Arr::random($numbers);
 
         $photo = Cache::remember($key, config('cache.ttl'), function () use($backgroundImage) {
             return $backgroundImage->random([
