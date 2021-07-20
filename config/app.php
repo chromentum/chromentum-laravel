@@ -237,6 +237,7 @@ return [
             'secret'	=> env('UNSPLASH_SECRET', null),
             'callbackUrl'	=> env('UNSPLASH_CALLBACK_URL', null),
             'utmSource' => env('UNSPLASH_UTM_SOURCE', null),
+            'categories' => env('UNSPLASH_CATEGORIES', "see forest beach mountain"),
         ]
     ],
 

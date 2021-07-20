@@ -24,9 +24,8 @@ class BackgroundImageController extends Controller
 
         $photo = Cache::remember($key, config('cache.ttl'), function () use($backgroundImage) {
             return $backgroundImage->random([
-                "h" => 768,
-                "w" => 1024,
-                "query" => "landscape"
+                "query" => config('app.background-image.unsplash.categories'),
+                "orientation" => "landscape"
             ]);
         });
 
