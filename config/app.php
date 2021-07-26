@@ -174,6 +174,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\FortifyServiceProvider::class,
+        App\Providers\JetstreamServiceProvider::class,
 
     ],
 
@@ -240,5 +242,11 @@ return [
             'categories' => env('UNSPLASH_CATEGORIES', "see forest beach mountain"),
         ]
     ],
+
+    "passport" => [
+        "client-id" => env('PASSPORT_CLIENT_ID', null),
+        "client-secret" => env('PASSPORT_CLIENT_SECRET', null),
+        "redirect-uri" => env('PASSPORT_REDIRECT_URI', null),
+    ]
 
 ];
