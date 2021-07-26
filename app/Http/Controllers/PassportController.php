@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
+use Laravel\Passport\Token;
 
 class PassportController extends Controller
 {
@@ -61,5 +64,25 @@ class PassportController extends Controller
         ]);
 
         return $response->json();
+    }
+
+    /**
+     * Return User information
+     *
+     * @return \Illuminate\Http\JsonResource
+     */
+    public function user()
+    {
+        return new UserResource(Auth::user());
+    }
+
+    /**
+     * Logout the user and delete tokens
+     */
+    public function logout()
+    {
+        $token = Auth::user()->currentAccessToken();
+        // $token->revoke();
+        return response()->json([], 200);
     }
 }
