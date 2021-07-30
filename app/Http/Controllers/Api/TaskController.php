@@ -39,7 +39,9 @@ class TaskController extends Controller
         $task->description = $request->description;
         $task->save();
 
-        return response('Task Added Successfully', 201);
+        return (new TaskResource($task))
+            ->response()
+            ->setStatusCode(201);
     }
 
     /**
@@ -70,7 +72,7 @@ class TaskController extends Controller
 
         $task->update($inputs);
 
-        return response('Task Updated Successfully');
+        return new TaskResource($task);
     }
 
     /**

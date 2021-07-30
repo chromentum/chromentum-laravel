@@ -64,7 +64,14 @@ class TaskApiTest extends TestCase
         $response = $this->actingAs($user,'api')
             ->json('POST', '/api/tasks', $payload);
 
-        $response->assertStatus(201);
+        $response->assertStatus(201)
+            ->assertJson([
+                'data' => true,
+            ]);
+
+        $this->assertDatabaseHas('tasks', [
+            'id' => $response['data']['id']
+        ]);
     }
 
     public function test_unauthorized_task_show()
@@ -121,6 +128,7 @@ class TaskApiTest extends TestCase
         $unathorizedUser = User::factory()->create();
         $response = $this->actingAs($unathorizedUser, 'api')
             ->json('PUT', '/api/tasks/' . Task::inRandomOrder()->first()->id);
+
         $response->assertStatus(403);
     }
 
@@ -141,7 +149,10 @@ class TaskApiTest extends TestCase
         $response = $this->actingAs($user, 'api')
             ->json('PUT', '/api/tasks/' . $task->id, $payload);
 
-        $response->assertStatus(200);
+        $response->assertStatus(200)
+            ->assertJsonStructure([
+                'data' => ['id']
+            ]);
 
         $updatedTask = Task::find($task->id);
 
