@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\Api\TaskController;
 use App\Http\Controllers\PassportController;
+use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,9 +19,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
-
 Route::get('/redirect', [PassportController::class, 'redirect']);
 Route::get('/callback', [PassportController::class, 'callback']);
+
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::get('tasks', TaskController::class)->name('tasks');
+});
