@@ -8,7 +8,14 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                @livewire('tasks.tasks-list')
+                <div class="block w-full">
+                    <div class="w-1/2 py-2 px-4">
+                        @livewire('tasks.add-task')
+                    </div>
+                </div>
+                <div class="mt-4">
+                    @livewire('tasks.tasks-list')
+                </div>
             </div>
         </div>
     </div>
