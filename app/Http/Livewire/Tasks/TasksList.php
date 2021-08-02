@@ -9,16 +9,11 @@ class TasksList extends Component
 {
     public $tasks;
 
-    protected $listeners = ['taskAdded' => 'refreshTaskList'];
+    protected $listeners = ['taskAdded' => '$refresh'];
 
     public function render()
     {
         $this->tasks = Task::all();
         return view('livewire.tasks.tasks-list');
-    }
-
-    public function refreshTaskList()
-    {
-        $this->tasks = Task::all();
     }
 }
