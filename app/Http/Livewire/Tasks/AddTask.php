@@ -27,6 +27,7 @@ class AddTask extends Component
         $task->user_id = Auth::user()->id;
         $task->description = $this->description;
         if ( $task->save() ) {
+            $this->emit('taskAdded');
             $this->description = null;
         }
     }
