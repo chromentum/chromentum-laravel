@@ -12,7 +12,7 @@ class TasksList extends Component
 
     protected $tasks;
 
-    protected $listeners = ['taskAdded' => '$refresh'];
+    protected $listeners = ['taskAdded' => '$refresh', 'taskUpdated' => '$refresh'];
 
     public function render()
     {
@@ -20,5 +20,14 @@ class TasksList extends Component
         return view('livewire.tasks.tasks-list', [
             'tasks' => $tasks,
         ]);
+    }
+
+    public function markTask(Task $task, $mark = true)
+    {
+        $task->completed_at = $mark ? now() : null;
+
+        if ($task->save()) {
+            $this->emit('taskUpdated');
+        }
     }
 }
