@@ -12,7 +12,7 @@ class TasksList extends Component
 
     protected $tasks;
 
-    protected $listeners = ['taskAdded' => '$refresh', 'taskUpdated' => '$refresh'];
+    protected $listeners = ['taskAdded' => '$refresh', 'taskUpdated' => '$refresh', 'taskDeleted' => '$refresh',];
 
     public function render()
     {
@@ -28,6 +28,13 @@ class TasksList extends Component
 
         if ($task->save()) {
             $this->emit('taskUpdated');
+        }
+    }
+
+    public function deleteTask(Task $task)
+    {
+        if ($task->delete()) {
+            $this->emit('taskDeleted');
         }
     }
 }
