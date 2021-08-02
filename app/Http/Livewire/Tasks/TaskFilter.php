@@ -10,4 +10,9 @@ class TaskFilter extends Component
     {
         return view('livewire.tasks.task-filter');
     }
+
+    public function changeFilter($filter)
+    {
+        dd($filter);
+    }
 }

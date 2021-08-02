@@ -12,14 +12,28 @@ class TasksList extends Component
 
     protected $tasks;
 
-    protected $listeners = ['taskAdded' => '$refresh', 'taskUpdated' => '$refresh', 'taskDeleted' => '$refresh',];
+    protected $listeners = [
+        'taskAdded' => '$refresh',
+        'taskUpdated' => '$refresh',
+        'taskDeleted' => '$refresh',
+        'filterTasks' => 'filterTasks',
+    ];
 
     public function render()
     {
-        $tasks = Task::paginate();
+        $this->tasks = Task::paginate();
         return view('livewire.tasks.tasks-list', [
-            'tasks' => $tasks,
+            'tasks' => $this->tasks,
         ]);
+    }
+
+    public function filterTasks($marked = true)
+    {
+        if ($marked) {
+            $this->tasks = Task::whereNotNull('completed')->paginate();
+        } else {
+            $this->tasks = Task::whereNull('completed')->paginate();
+        }
     }
 
     public function markTask(Task $task, $mark = true)
