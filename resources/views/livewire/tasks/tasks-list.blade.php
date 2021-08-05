@@ -1,7 +1,7 @@
 <div>
     <div>
         <ul>
-            @foreach ($tasks as $task)
+            @forelse ($tasks as $task)
                 <li class="py-2 px-4">
                     <div class="flex items-start justify-start">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -22,7 +22,11 @@
                         @endif
                     </div>
                 </li>
-            @endforeach
+            @empty
+                <li class="py-2 px-4">
+                    No tasks for now
+                </li>
+            @endforelse
         </ul>
         <div class="py-2 px-4">
             {{ $tasks->links() }}
