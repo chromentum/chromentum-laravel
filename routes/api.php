@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\BackgroundImageController;
+use App\Http\Controllers\Api\QuoteController;
 use App\Http\Controllers\Api\TaskController;
 use App\Http\Controllers\PassportController;
 use Illuminate\Http\Request;
@@ -18,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('background-image', BackgroundImageController::class);
+Route::get('quote', QuoteController::class);
 
 Route::middleware('auth:api')->group(function () {
     Route::get('user', [PassportController::class, 'user']);
