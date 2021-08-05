@@ -13,6 +13,6 @@ class TaskFilter extends Component
 
     public function changeFilter($filter)
     {
-        dd($filter);
+        $this->emit('filterTasks', $filter);
     }
 }
