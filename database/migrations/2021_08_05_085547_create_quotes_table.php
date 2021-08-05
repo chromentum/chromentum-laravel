@@ -19,7 +19,7 @@ class CreateQuotesTable extends Migration
             $table->string('quote');
             $table->string('author');
             $table->string('tags')->nullable();
-            $table->enum('scope', ['global', 'local']);
+            $table->enum('scope', ['global', 'local'])->default('global');
             $table->timestamps();
         });
     }
