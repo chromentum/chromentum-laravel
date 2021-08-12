@@ -20,7 +20,7 @@ class BackgroundImageController extends Controller
     public function __invoke(Request $request, BackgroundImageService $backgroundImage)
     {
         $numbers = ["1", "2", "3", "4", "5"];
-        $key = (string)now()->format('dmy') . Arr::random($numbers);
+        $key =  'background-image-' . (string)now()->format('dmy') . Arr::random($numbers);
 
         $photo = Cache::remember($key, config('cache.ttl'), function () use($backgroundImage) {
             return $backgroundImage->random([
