@@ -566,7 +566,7 @@ video {
 	--tw-transform: translateX(var(--tw-translate-x)) translateY(var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.border, .border-2, .border-b-2, .border-l-4, .border-t, .border-b, .border-r, .md\:border-t-0, .md\:border-l {
+.border, .border-2, .border-0, .border-b-2, .border-l-4, .border-t, .border-b, .border-r, .md\:border-t-0, .md\:border-l {
 	--tw-border-opacity: 1;
 	border-color: rgba(229, 231, 235, var(--tw-border-opacity));
 }
@@ -1220,6 +1220,9 @@ select {
 .mb-4 {
 	margin-bottom: 1rem;
 }
+.mr-5 {
+	margin-right: 1.25rem;
+}
 .-mt-px {
 	margin-top: -1px;
 }
@@ -1511,6 +1514,9 @@ select {
 .border-2 {
 	border-width: 2px;
 }
+.border-0 {
+	border-width: 0px;
+}
 .border-b-2 {
 	border-bottom-width: 2px;
 }
@@ -1633,6 +1639,9 @@ select {
 .p-6 {
 	padding: 1.5rem;
 }
+.p-5 {
+	padding: 1.25rem;
+}
 .px-4 {
 	padding-left: 1rem;
 	padding-right: 1rem;
@@ -1722,9 +1731,6 @@ select {
 .pb-2 {
 	padding-bottom: 0.5rem;
 }
-.pt-8 {
-	padding-top: 2rem;
-}
 .pr-10 {
 	padding-right: 2.5rem;
 }
@@ -1733,6 +1739,9 @@ select {
 }
 .pr-9 {
 	padding-right: 2.25rem;
+}
+.pt-8 {
+	padding-top: 2rem;
 }
 .pl-1 {
 	padding-left: 0.25rem;
@@ -1873,6 +1882,10 @@ select {
 	--tw-text-opacity: 1;
 	color: rgba(0, 0, 0, var(--tw-text-opacity));
 }
+.text-yellow-400 {
+	--tw-text-opacity: 1;
+	color: rgba(251, 191, 36, var(--tw-text-opacity));
+}
 .text-gray-200 {
 	--tw-text-opacity: 1;
 	color: rgba(229, 231, 235, var(--tw-text-opacity));
@@ -1880,14 +1893,6 @@ select {
 .text-gray-300 {
 	--tw-text-opacity: 1;
 	color: rgba(209, 213, 219, var(--tw-text-opacity));
-}
-.text-blue-600 {
-	--tw-text-opacity: 1;
-	color: rgba(37, 99, 235, var(--tw-text-opacity));
-}
-.text-yellow-400 {
-	--tw-text-opacity: 1;
-	color: rgba(251, 191, 36, var(--tw-text-opacity));
 }
 .text-blue-900 {
 	--tw-text-opacity: 1;
@@ -2030,6 +2035,10 @@ select {
 .hover\:bg-green-700:hover {
 	--tw-bg-opacity: 1;
 	background-color: rgba(4, 120, 87, var(--tw-bg-opacity));
+}
+.hover\:bg-gray-200:hover {
+	--tw-bg-opacity: 1;
+	background-color: rgba(229, 231, 235, var(--tw-bg-opacity));
 }
 .hover\:text-gray-500:hover {
 	--tw-text-opacity: 1;
@@ -2429,6 +2438,14 @@ select {
 		margin-top: 0px;
 	}
 
+	.md\:mb-0 {
+		margin-bottom: 0px;
+	}
+
+	.md\:ml-auto {
+		margin-left: auto;
+	}
+
 	.md\:grid {
 		display: grid;
 	}
@@ -2439,6 +2456,10 @@ select {
 
 	.md\:grid-cols-2 {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.md\:flex-row {
+		flex-direction: row;
 	}
 
 	.md\:gap-6 {
